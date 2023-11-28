@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#comment
+sudo apt-get -y update
+sudo apt-get install -y nginx
+sudo service nginx start
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+echo "server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        echo 'Hello World!';
+    }
+}" > /etc/nginx/sites-available/default
+sudo service nginx restart
